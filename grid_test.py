@@ -1,0 +1,1 @@
+# Tests on class Grid's methods.
