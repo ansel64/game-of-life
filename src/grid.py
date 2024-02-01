@@ -2,8 +2,8 @@ class Grid(object):
     def __init__(self, grid: list) -> None:
         self.Grid = grid
     
-    def drawGrid():
+    def drawGrid(self):
         pass
 
-    def updateGrid():
+    def updateGrid(self):
         pass
