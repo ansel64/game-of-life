@@ -1,8 +1,8 @@
 import pytest
 import sys
-sys.path.insert(1, '/Users/ksvni/Documents/Project/Python/game-of-life/src/')
+# sys.path.insert(1, '/Users/ksvni/Documents/Project/Python/game-of-life/src/')
 
-from model import grid as gr
+from src.model import grid as gr
 
 class Test_Grid:
     grid1 = [[0, 0, 0, 0, 0],
@@ -36,11 +36,10 @@ class Test_Grid:
                                    [0, 1, 0, 0, 0],
                                    [0, 0, 0, 0, 0]]
         assert self.mock2.storage == [[0, 0, 0, 0, 0],
-                                     [0, 0, 1, 0, 0],
-                                     [0, 1, 0, 0, 0],
-                                     [0, 1, 0, 0, 0],
-                                     [0, 0, 0, 0, 0]]
-
+                                      [0, 0, 1, 0, 0],
+                                      [0, 1, 0, 0, 0],
+                                      [0, 1, 0, 0, 0],
+                                      [0, 0, 0, 0, 0]]
 
 
     def test_updateGrid(self):
@@ -54,4 +53,4 @@ class Test_Grid:
                                    [0, 1, 1, 0, 0],
                                    [0, 0, 0, 0, 0],
                                    [0, 0, 0, 0, 0]]
-        assert self.mock2.storage == self.grid2
+        assert self.mock2.storage == self.mock2.grid

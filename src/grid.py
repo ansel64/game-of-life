@@ -5,12 +5,13 @@ class Grid(object):
         '''Create two copies of the given list, one for updating and another for storing.'''
         self.grid = grid
         self.storage = copy.deepcopy(grid)
+        self.size = len(grid)
 
 
     def updateGrid(self) -> None:
         grid = self.grid
         storage = self.storage
-        size = len(grid)
+        size = self.size
 
         Grid.clearEdge(self)
 
@@ -26,9 +27,11 @@ class Grid(object):
                 elif cell == 1 and (totalNeighbors == 2 or totalNeighbors == 3):
                     grid[i][j] = 1
 
+        self.storage = copy.deepcopy(grid)
+
 
     def countNeighbors(self, i: int, j: int) -> int:
-        '''Count the surrounding cells of the given cell index.'''
+        '''Count the surrounding alive cells at the given cell index.'''
         grid = self.storage
         return (grid[i][j-1] + grid[i][j+1]) + (grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1]) + (grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1])
 
@@ -54,7 +57,6 @@ class Grid(object):
 
     def getGrid(self) -> list:
         return self.grid
-    
 
     def getStorage(self) -> list:
         return self.storage
