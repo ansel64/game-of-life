@@ -11,8 +11,8 @@ g = [[0, 1, 1, 0, 0],
 
 
 def main():
-    SCREEN_WIDTH = get_screen_width()
-    SCREEN_HEIGHT = get_screen_height()
+    SCREEN_WIDTH = 1000
+    SCREEN_HEIGHT = 1000
 
     init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Conway's Game of Life")
 
@@ -32,20 +32,20 @@ def main():
 
 
 def drawGrid(gridObj):
-    CELL_SIZE = 50
     grid = gridObj.getGrid()
+    CELL_SIZE = 20
 
-    clear_background(BLACK)
+    clear_background(WHITE)
     begin_drawing()
 
-    posY = 0
+    posY = 1
     for row in grid:
-        posX = 0
+        posX = 1
         for cell in row:
             if cell == 0:
-                draw_rectangle(posX, posY, CELL_SIZE, CELL_SIZE, BLACK)
+                draw_rectangle(posX, posY, CELL_SIZE-1, CELL_SIZE-1, BLACK)
             else:
-                draw_rectangle(posX, posY, CELL_SIZE, CELL_SIZE, WHITE)
+                draw_rectangle(posX, posY, CELL_SIZE-1, CELL_SIZE-1, WHITE)
             posX += CELL_SIZE
         posY += CELL_SIZE
 
