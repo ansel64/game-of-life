@@ -2,7 +2,7 @@ import pytest
 import sys
 # sys.path.insert(1, '/Users/ksvni/Documents/Project/Python/game-of-life/src/')
 
-from src.model import grid as gr
+from src import grid as gr
 
 class Test_Grid:
     grid1 = [[0, 0, 0, 0, 0],
