@@ -1,7 +1,8 @@
 import copy
+from pyray import *
 
 class Grid(object):
-    def __init__(self, grid) -> None:
+    def __init__(self, grid: list) -> None:
         '''Create two copies of the given list, one for updating and another for storing.'''
         self.grid = grid
         self.storage = copy.deepcopy(grid)
@@ -55,8 +56,33 @@ class Grid(object):
             storage[i][(len(grid) - 1)] = 0
 
 
+    def drawGrid(self):
+        grid = self.getGrid()
+        gridSize = self.getSize()
+        CELL_SIZE = 24
+
+        clear_background(WHITE)
+        begin_drawing()
+
+        posY = 1
+        for i in range(1, gridSize-1):
+            posX = 1
+            for j in range(1, gridSize-1):
+                if grid[i][j] == 0:
+                    draw_rectangle(posX, posY, CELL_SIZE-1, CELL_SIZE-1, BLACK)
+                else:
+                    draw_rectangle(posX, posY, CELL_SIZE-1, CELL_SIZE-1, WHITE)
+                posX += CELL_SIZE
+            posY += CELL_SIZE
+
+        end_drawing()
+
+
     def getGrid(self) -> list:
         return self.grid
 
     def getStorage(self) -> list:
         return self.storage
+
+    def getSize(self) -> int:
+        return self.size
