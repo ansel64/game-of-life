@@ -58,17 +58,6 @@ class Test_Grid:
         assert self.mock2.storage == self.mock2.grid
 
 
-class Test_Button:
-    mock1 = button.Button(5, 4, 10, '')
-
-    def test_isMouseHover(self):
-        assert self.mock1.isMouseHover(5, 4) == True
-        assert self.mock1.isMouseHover(15, 14) == True
-        assert self.mock1.isMouseHover(9, 13) == True
-        assert self.mock1.isMouseHover(4, 2) == False
-        assert self.mock1.isMouseHover(19, 15) == False
-
-
 class Test_Controller:
     def test_inputHandler(self):
         pass

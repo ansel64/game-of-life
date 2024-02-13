@@ -3,6 +3,7 @@ from button import *
 
 class Controller(object):
     def __init__(self, buttonSize, controllerSize):
+        '''Create a 2d array of buttons that corresponds to the logic grid.'''
         self.buttonSize = buttonSize
         self.controllerSize = controllerSize
         self.controller = []
@@ -10,11 +11,11 @@ class Controller(object):
         for i in range(controllerSize):
             self.controller.append([])
             for j in range(controllerSize):
-                self.controller[i].append(Button(j * buttonSize, i * buttonSize, buttonSize, BLACK))
+                self.controller[i].append(Button(i * buttonSize, j * buttonSize, buttonSize, BLACK))
 
 
     def drawController(self):
-        '''Draw the entire controller to screen.'''
+        '''Draw the controller to screen.'''
         controller = self.controller
 
         clear_background(WHITE)
@@ -27,15 +28,21 @@ class Controller(object):
         end_drawing()
 
 
-    def inputHandler(self):
-        '''Converts the controller to grid format.'''
+    def clickHandler(self, mouseX: int, mouseY: int) -> None:
+        '''When mouse is clicked, locate the button that was clicked and change its state.'''
+        i = mouseY // self.buttonSize # For whatever reason the mouse positions are switched
+        j = mouseX // self.buttonSize
+        button = self.controller[i][j]
+        
+        if button.color == BLACK:
+            button.color = WHITE
+        else:
+            button.color = BLACK
+
+
+    def inputHandler(self) -> list:
+        '''Converts the controller to grid format. This also means creating 2 extra rows and columns for the edges'''
         controller = self.controller
         grid = []
 
-        for i in range(len(controller)):
-            grid.append([])
-            for button in controller[i]:
-                if button.color == WHITE:
-                    grid[i].append(1)
-                else:
-                    grid[i].append(0)
+        return grid

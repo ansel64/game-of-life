@@ -14,12 +14,12 @@ class Grid(object):
         '''Updates the grid based on Conway's rule.'''
         grid = self.grid
         storage = self.storage
-        size = self.gridSize
+        gridSize = self.gridSize
 
         Grid.clearEdge(self)
 
-        for i in range(1, size - 1):
-            for j in range(1, size - 1):
+        for i in range(1, gridSize-1):
+            for j in range(1, gridSize-1):
                 totalNeighbors = Grid.countNeighbors(self, i, j)
                 cell = storage[i][j]
 

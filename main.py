@@ -1,6 +1,8 @@
 from pyray import *
 from enum import Enum
 from time import sleep
+
+from raylib.defines import KEY_ENTER, MOUSE_LEFT_BUTTON
 import grid as gr
 import controller as ctrl
 
@@ -12,6 +14,7 @@ def main():
     DELTA_T = 0.75
     CELL_SIZE = 24
 
+    grid = gr.Grid([], 0) # This is a stub for now
     controller = ctrl.Controller(CELL_SIZE, 42)
     currentScreen = Screens.EDIT
 
@@ -23,8 +26,19 @@ def main():
         match currentScreen:
             case Screens.EDIT:
                 controller.drawController()
+
+                if is_mouse_button_pressed(MOUSE_LEFT_BUTTON):
+                    x = get_mouse_x()
+                    y = get_mouse_y()
+
+                    controller.clickHandler(x, y)
+
+                if is_key_pressed(KEY_ENTER):
+                    grid = gr.Grid(controller.inputHandler(), CELL_SIZE)
             case Screens.RUN:
-                pass
+                grid.drawGrid()
+                sleep(DELTA_T)
+                grid.updateGrid()
 
     close_window()
 
