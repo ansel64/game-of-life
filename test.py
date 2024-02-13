@@ -3,6 +3,8 @@ import sys
 # sys.path.insert(1, '/Users/ksvni/Documents/Project/Python/game-of-life/src/')
 
 import grid as gr
+import button
+import controller as ctrl
 
 class Test_Grid:
     grid1 = [[0, 0, 0, 0, 0],
@@ -16,8 +18,8 @@ class Test_Grid:
              [0, 1, 0, 0, 0],
              [0, 0, 1, 0, 0]]
                             
-    mock1 = gr.Grid(grid1)
-    mock2 = gr.Grid(grid2)
+    mock1 = gr.Grid(grid1, 24)
+    mock2 = gr.Grid(grid2, 24)
 
     def test_countNeighbors(self):
         assert self.mock1.countNeighbors(2, 2) == 0
@@ -54,3 +56,19 @@ class Test_Grid:
                                    [0, 0, 0, 0, 0],
                                    [0, 0, 0, 0, 0]]
         assert self.mock2.storage == self.mock2.grid
+
+
+class Test_Button:
+    mock1 = button.Button(5, 4, 10, '')
+
+    def test_isMouseHover(self):
+        assert self.mock1.isMouseHover(5, 4) == True
+        assert self.mock1.isMouseHover(15, 14) == True
+        assert self.mock1.isMouseHover(9, 13) == True
+        assert self.mock1.isMouseHover(4, 2) == False
+        assert self.mock1.isMouseHover(19, 15) == False
+
+
+class Test_Controller:
+    def test_inputHandler(self):
+        pass

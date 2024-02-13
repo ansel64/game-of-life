@@ -2,17 +2,19 @@ import copy
 from pyray import *
 
 class Grid(object):
-    def __init__(self, grid: list) -> None:
+    def __init__(self, grid: list, cellSize: int) -> None:
         '''Create two copies of the given list, one for updating and another for storing.'''
         self.grid = grid
         self.storage = copy.deepcopy(grid)
-        self.size = len(grid)
+        self.gridSize = len(grid)
+        self.cellSize = cellSize
 
 
     def updateGrid(self) -> None:
+        '''Updates the grid based on Conway's rule.'''
         grid = self.grid
         storage = self.storage
-        size = self.size
+        size = self.gridSize
 
         Grid.clearEdge(self)
 
@@ -57,9 +59,10 @@ class Grid(object):
 
 
     def drawGrid(self):
-        grid = self.getGrid()
-        gridSize = self.getSize()
-        CELL_SIZE = 24
+        '''Draw the grid to the screen.'''
+        grid = self.grid
+        gridSize = self.gridSize
+        cellSize = self.cellSize
 
         clear_background(WHITE)
         begin_drawing()
@@ -69,20 +72,10 @@ class Grid(object):
             posX = 1
             for j in range(1, gridSize-1):
                 if grid[i][j] == 0:
-                    draw_rectangle(posX, posY, CELL_SIZE-1, CELL_SIZE-1, BLACK)
+                    draw_rectangle(posX, posY, cellSize-1, cellSize-1, BLACK)
                 else:
-                    draw_rectangle(posX, posY, CELL_SIZE-1, CELL_SIZE-1, WHITE)
-                posX += CELL_SIZE
-            posY += CELL_SIZE
+                    draw_rectangle(posX, posY, cellSize-1, cellSize-1, WHITE)
+                posX += cellSize
+            posY += cellSize
 
         end_drawing()
-
-
-    def getGrid(self) -> list:
-        return self.grid
-
-    def getStorage(self) -> list:
-        return self.storage
-
-    def getSize(self) -> int:
-        return self.size

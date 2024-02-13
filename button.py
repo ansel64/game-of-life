@@ -8,7 +8,8 @@ class Button(object):
         self.color = color
     
 
-    def isButtonClicked(self, mouseX, mouseY):
+    def isMouseHover(self, mouseX, mouseY):
+        '''Checks if mouse is hovering over a button.'''
         x = self.x
         y = self.y
         size = self.size
@@ -17,8 +18,5 @@ class Button(object):
 
 
     def drawButton(self):
-        begin_drawing()
-
+        '''Draw the button to the screen.'''
         draw_rectangle(self.x+1, self.y+1, self.size-1, self.size-1, self.color)
-
-        end_drawing()
