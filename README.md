@@ -13,7 +13,7 @@
 
 # Notes
 
-- Running the executable file might take a while to load
+- Running the executable file might take a while to load (especially on macos), just wait until the window appears
 - As of now, the simulation is set to default parameters and cannot be changed
 - To close or reset the simulation, quit the app or press ESC
 - For macos users, you might need to go to `System Settings -> Privacy & Security`, scroll down and click "Open Anyway" to run the executable file
