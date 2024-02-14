@@ -3,7 +3,6 @@ import sys
 # sys.path.insert(1, '/Users/ksvni/Documents/Project/Python/game-of-life/src/')
 
 import grid as gr
-import button
 import controller as ctrl
 
 class Test_Grid:
