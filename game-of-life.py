@@ -9,9 +9,9 @@ import controller as ctrl
 Screens = Enum('Screens', ['EDIT', 'RUN'])
 
 def main():
-    DELTA_T = 0.10
+    DELTA_T = 0.3
     CELL_SIZE = 24
-    GRID_SIZE = 80
+    GRID_SIZE = 50
 
     SCREEN_WIDTH = (CELL_SIZE * GRID_SIZE) + 1
     SCREEN_HEIGHT = (CELL_SIZE * GRID_SIZE) + 1
@@ -23,7 +23,7 @@ def main():
 
     init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Conway's Game of Life")
 
-    set_target_fps(60)
+    set_target_fps(144)
 
     while (not window_should_close()):
         match currentScreen:
@@ -41,7 +41,7 @@ def main():
                     currentScreen = Screens.RUN
             case Screens.RUN:
                 grid.drawGrid()
-                sleep(DELTA_T)
+                wait_time(DELTA_T)
                 grid.updateGrid()
 
     close_window()

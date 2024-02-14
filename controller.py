@@ -2,8 +2,8 @@ from pyray import *
 from button import *
 
 class Controller(object):
+    '''2d array of buttons with a size that corresponds to the logic grid. This is a way of input for the user.'''
     def __init__(self, buttonSize: int, controllerSize: int) -> None:
-        '''Create a 2d array of buttons that corresponds to the logic grid.'''
         self.buttonSize = buttonSize
         self.controllerSize = controllerSize
         self.controller = []
@@ -25,12 +25,14 @@ class Controller(object):
             for button in row:
                 button.drawButton()
 
+        draw_text("Press Space to Play", 10, 10, 40, RAYWHITE)
+
         end_drawing()
 
 
     def clickHandler(self, mouseX: int, mouseY: int) -> None:
-        '''Change the button's color when it's clicked'''
-        i = mouseX // self.buttonSize # For whatever reason the mouse positions are switched
+        '''Change the button's color when it's clicked.'''
+        i = mouseX // self.buttonSize
         j = mouseY // self.buttonSize
         button = self.controller[i][j]
         
@@ -39,14 +41,14 @@ class Controller(object):
 
 
     def inputHandler(self) -> list:
-        '''Converts the controller to grid format. This also means creating 2 extra rows and columns for the edges'''
+        '''Converts the controller to grid format. This also means creating 2 extra rows and columns for the edges.'''
         controller = self.controller
         grid = []
 
         for i in range(len(controller)):
             grid.append([])
             for j in range(len(controller[i])):
-                button = controller[j][i]
+                button = controller[i][j]
                 
                 if j == 0: 
                     grid[i].append(0)

@@ -4,6 +4,7 @@ import sys
 
 import grid as gr
 import controller as ctrl
+from button import *
 
 class Test_Grid:
     grid1 = [[0, 0, 0, 0, 0],
@@ -58,5 +59,28 @@ class Test_Grid:
 
 
 class Test_Controller:
+    mock = ctrl.Controller(24, 5)
+    grid = [[1, 0, 0, 1, 1],
+            [0, 1, 1, 1, 0],
+            [1, 0, 0, 1, 0],
+            [0, 0, 0, 1, 0],
+            [0, 1, 0, 1, 0]]
+    controller = []
+    
+    for i in range(len(grid)):
+        controller.append([])
+        for cell in grid[i]:
+            if cell == 0:
+                controller[i].append(Button(0, 0, 24, BLACK))
+            else:
+                controller[i].append(Button(0, 0, 24, WHITE))
+    mock.controller = controller
+
     def test_inputHandler(self):
-        pass
+        assert self.mock.inputHandler() == [[0, 0, 0, 0, 0, 0, 0],
+                                            [0, 1, 0, 0, 1, 1, 0],
+                                            [0, 0, 1, 1, 1, 0, 0],
+                                            [0, 1, 0, 0, 1, 0, 0],
+                                            [0, 0, 0, 0, 1, 0, 0],
+                                            [0, 0, 1, 0, 1, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0]]
