@@ -3,7 +3,7 @@ from pyray import *
 
 class Grid(object):
     def __init__(self, grid: list, cellSize: int) -> None:
-        '''Create two copies of the given list, one for updating and another for storing.'''
+        '''Create two copies of the given , one for updating and another for storing.'''
         self.grid = grid
         self.storage = copy.deepcopy(grid)
         self.gridSize = len(grid)
@@ -58,7 +58,7 @@ class Grid(object):
             storage[i][(len(grid) - 1)] = 0
 
 
-    def drawGrid(self):
+    def drawGrid(self) -> None:
         '''Draw the grid to the screen.'''
         grid = self.grid
         gridSize = self.gridSize
@@ -79,3 +79,9 @@ class Grid(object):
             posY += cellSize
 
         end_drawing()
+
+
+    def printGrid(self):
+        for row in self.grid:
+            print(row)
+        print(len(self.grid[0]), len(self.grid))

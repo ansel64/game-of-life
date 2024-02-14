@@ -2,20 +2,23 @@ from pyray import *
 from enum import Enum
 from time import sleep
 
-from raylib.defines import KEY_ENTER, MOUSE_LEFT_BUTTON
+from raylib.defines import  MOUSE_LEFT_BUTTON
 import grid as gr
 import controller as ctrl
 
 Screens = Enum('Screens', ['EDIT', 'RUN'])
 
 def main():
-    SCREEN_WIDTH = 961
-    SCREEN_HEIGHT = 961
-    DELTA_T = 0.75
+    DELTA_T = 0.10
     CELL_SIZE = 24
+    GRID_SIZE = 40
+
+    SCREEN_WIDTH = (CELL_SIZE * GRID_SIZE) + 1
+    SCREEN_HEIGHT = (CELL_SIZE * GRID_SIZE) + 1
+
 
     grid = gr.Grid([], 0) # This is a stub for now
-    controller = ctrl.Controller(CELL_SIZE, 42)
+    controller = ctrl.Controller(CELL_SIZE, GRID_SIZE)
     currentScreen = Screens.EDIT
 
     init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Conway's Game of Life")
@@ -33,27 +36,16 @@ def main():
 
                     controller.clickHandler(x, y)
 
-                if is_key_pressed(KEY_ENTER):
+                if is_key_pressed(32): # When space is pressed
                     grid = gr.Grid(controller.inputHandler(), CELL_SIZE)
+                    currentScreen = Screens.RUN
+                    grid.printGrid()
             case Screens.RUN:
                 grid.drawGrid()
                 sleep(DELTA_T)
                 grid.updateGrid()
 
     close_window()
-
-
-def parseGrid(fileName):
-    file = open(fileName)
-    lines = file.readlines()
-    grid = []
-
-    for i in range(len(lines)):
-        grid.append([])
-        line = lines[i].split(' ')
-        for cell in line:
-            grid[i].append(int(cell))
-    return grid
 
 
 if __name__ == '__main__':
