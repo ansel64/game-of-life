@@ -1,6 +1,5 @@
+# Unit tests for the class methods
 import pytest
-import sys
-# sys.path.insert(1, '/Users/ksvni/Documents/Project/Python/game-of-life/src/')
 
 import grid as gr
 import controller as ctrl
