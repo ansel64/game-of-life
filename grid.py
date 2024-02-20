@@ -12,7 +12,7 @@ class Grid(object):
 
 
     def updateGrid(self) -> None:
-        '''Updates the grid based on Conway's rule:
+        '''The functions takes self as a parameter, iterates through the cells and update them to self.grid based on Conway's rule:
             - If the cell is dead and has 3 neighbors, it revives
             - If the cell is alive and has less than 2 or greater than 3 neighbors, it dies
             - If the cell is alive and has 2 or 3 neighbors, it stays alive'''
