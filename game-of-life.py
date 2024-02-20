@@ -8,7 +8,8 @@ from raylib.defines import  MOUSE_LEFT_BUTTON
 import grid as gr
 import controller as ctrl
 
-Screens = Enum('Screens', ['EDIT', 'RUN']) # The state of the screen tells what to listen for inputs and output to the user.
+# The state of the screen tells what to listen for inputs and output to the user.
+Screens = Enum('Screens', ['EDIT', 'RUN'])
 
 def main():
     DELTA_T = 0.3 # Seconds to wait between each iteration of cells
@@ -27,7 +28,8 @@ def main():
 
     set_target_fps(144)
 
-    '''This is the main loop that dictates the program's behavior based on its current screen.'''
+    # This is the main loop that dictates the program's 
+    # behavior based on its current screen
     while (not window_should_close()):
         match currentScreen:
             case Screens.EDIT:
