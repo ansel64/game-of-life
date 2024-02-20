@@ -2,7 +2,7 @@ from pyray import *
 from button import *
 
 class Controller(object):
-    '''2d array of buttons with a size that corresponds to the logic grid. This is a way of input for the user.'''
+    '''A 2d list of clickable buttons that corresponds to the logic grid. This is the controller for the user to input.'''
     def __init__(self, buttonSize: int, controllerSize: int) -> None:
         self.buttonSize = buttonSize
         self.controllerSize = controllerSize
@@ -15,7 +15,7 @@ class Controller(object):
 
 
     def drawController(self) -> None:
-        '''Draw the controller to screen.'''
+        '''Draws the controller to the screen.'''
         controller = self.controller
 
         clear_background(WHITE)
@@ -31,17 +31,18 @@ class Controller(object):
 
 
     def clickHandler(self, mouseX: int, mouseY: int) -> None:
-        '''Change the button's color when it's clicked.'''
+        '''Calculates which button the user clicked with the given coordinates and changes its color.'''
         i = mouseX // self.buttonSize
         j = mouseY // self.buttonSize
         button = self.controller[i][j]
         
-        if button.color == BLACK: button.color = WHITE
+        if button.color == BLACK:
+            button.color = WHITE
         else: button.color = BLACK
 
 
     def inputHandler(self) -> list:
-        '''Converts the controller to grid format. This also means creating 2 extra rows and columns for the edges.'''
+        '''Converts the controller to the logic grid format. This also means creating 2 extra rows and columns in the list for the edges of the grid.'''
         controller = self.controller
         grid = []
 
@@ -50,13 +51,14 @@ class Controller(object):
             for j in range(len(controller[i])):
                 button = controller[i][j]
                 
-                if j == 0: 
+                if j == 0:
                     grid[i].append(0)
 
-                if button.color == WHITE: grid[i].append(1)
+                if button.color == WHITE: 
+                    grid[i].append(1)
                 else: grid[i].append(0)
 
-                if j == len(controller[i]) - 1: 
+                if j == len(controller[i]) - 1:
                     grid[i].append(0)
 
         grid.insert(0, [0] * (self.controllerSize + 2))
