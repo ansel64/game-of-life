@@ -2,9 +2,9 @@
 from pyray import *
 from button import *
 
+# A 2d list of clickable buttons that corresponds to the logic grid. This is the 
+# controller for the user to input
 class Controller(object):
-    '''A 2d list of clickable buttons that corresponds to the logic grid. This is the 
-    controller for the user to input.'''
     def __init__(self, buttonSize: int, controllerSize: int) -> None:
         self.buttonSize = buttonSize
         self.controllerSize = controllerSize
@@ -16,8 +16,8 @@ class Controller(object):
                 self.controller[i].append(Button(i * buttonSize, j * buttonSize, buttonSize, BLACK))
 
 
+    # Draws the controller to the screen
     def drawController(self) -> None:
-        '''Draws the controller to the screen.'''
         controller = self.controller
 
         clear_background(WHITE)
@@ -32,8 +32,8 @@ class Controller(object):
         end_drawing()
 
 
+    # Calculates which button the user clicked with the given coordinates and changes its color
     def clickHandler(self, mouseX: int, mouseY: int) -> None:
-        '''Calculates which button the user clicked with the given coordinates and changes its color.'''
         i = mouseX // self.buttonSize
         j = mouseY // self.buttonSize
         button = self.controller[i][j]
@@ -43,9 +43,9 @@ class Controller(object):
         else: button.color = BLACK
 
 
+    # Converts the controller to the logic grid format. This also means creating 2 extra 
+    # rows and columns in the list for the edges of the grid
     def inputHandler(self) -> list:
-        '''Converts the controller to the logic grid format. This also means creating 2 extra 
-        rows and columns in the list for the edges of the grid.'''
         controller = self.controller
         grid = []
 
