@@ -79,7 +79,7 @@ class Grid(object):
             posX = 1
             for j in range(1, gridSize-1):
                 if grid[i][j] == 0:
-                    draw_rectangle(posY, posX, cellSize-1, cellSize-1, BLACK) # For some reason posX and posY has to be inverted in order for the grid to be drawn properly.
+                    draw_rectangle(posY, posX, cellSize-1, cellSize-1, BLACK)
                 else:
                     draw_rectangle(posY, posX, cellSize-1, cellSize-1, WHITE)
                 posX += cellSize
