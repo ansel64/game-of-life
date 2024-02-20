@@ -44,7 +44,7 @@ def main():
             case Screens.RUN:
                 grid.drawGrid()
                 wait_time(DELTA_T)
-                grid.updateGrid()
+                gr.Grid.updateGrid(grid)
 
     close_window()
 
