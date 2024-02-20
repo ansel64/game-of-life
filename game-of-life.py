@@ -44,7 +44,7 @@ def main():
             case Screens.RUN:
                 grid.drawGrid()
                 wait_time(DELTA_T)
-                gr.Grid.updateGrid(grid)
+                gr.Grid.updateGrid(grid) # Call the PT task function
 
     close_window()
 
