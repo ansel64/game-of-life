@@ -2,7 +2,8 @@ from pyray import *
 from button import *
 
 class Controller(object):
-    '''A 2d list of clickable buttons that corresponds to the logic grid. This is the controller for the user to input.'''
+    '''A 2d list of clickable buttons that corresponds to the logic grid. This is the 
+    controller for the user to input.'''
     def __init__(self, buttonSize: int, controllerSize: int) -> None:
         self.buttonSize = buttonSize
         self.controllerSize = controllerSize
@@ -42,7 +43,8 @@ class Controller(object):
 
 
     def inputHandler(self) -> list:
-        '''Converts the controller to the logic grid format. This also means creating 2 extra rows and columns in the list for the edges of the grid.'''
+        '''Converts the controller to the logic grid format. This also means creating 2 extra 
+        rows and columns in the list for the edges of the grid.'''
         controller = self.controller
         grid = []
 
