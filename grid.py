@@ -13,7 +13,8 @@ class Grid(object):
 
 
     def updateGrid(self) -> None:
-        '''The functions takes self as a parameter, iterates through the cells and update them to self.grid based on Conway's rule:
+        '''The functions takes self as a parameter, iterates through the cells and 
+        update them to self.grid based on Conway's rule:
             - If the cell is dead and has 3 neighbors, it revives
             - If the cell is alive and has less than 2 or greater than 3 neighbors, it dies
             - If the cell is alive and has 2 or 3 neighbors, it stays alive'''
@@ -41,7 +42,8 @@ class Grid(object):
     def countNeighbors(self, i: int, j: int) -> int:
         '''Counts the surrounding alive cells of the given cell index.'''
         grid = self.storage
-        return (grid[i][j-1] + grid[i][j+1]) + (grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1]) + (grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1])
+        return (grid[i][j-1] + grid[i][j+1]) + (grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1]) 
+        + (grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1]);
 
 
     def clearEdge(self) -> None:
