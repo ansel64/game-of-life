@@ -1,3 +1,4 @@
+# game-of-life.py
 # This app uses the Ryalib libraries for GUI: https://www.raylib.com
 from pyray import *
 from enum import Enum
