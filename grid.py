@@ -44,6 +44,7 @@ class Grid(object):
         grid = self.storage
         totalNeighbors = grid[i][j-1] + grid[i][j+1] + grid[i-1][j-1] + grid[i-1][j] 
         totalNeighbors += grid[i-1][j+1] + grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1]
+        return totalNeighbors
 
 
     # Kill all the cells that reaches the edge of the grid
