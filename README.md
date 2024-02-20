@@ -9,7 +9,9 @@
 1. Install the dependencies: [Python3](https://www.python.org/downloads/) [Python Raylib](https://pypi.org/project/raylib/) [PyInstaller](https://pyinstaller.org/en/stable/)
 2. Run `git clone https://github.com/ansel64/game-of-life.git` on your CLI
 3. In the source code directory, run `pyinstaller game-of-life.py --onefile --windowed`
-5. Your executable file is now in the `dist/` directory
+4. Your executable file is now in the `dist/` directory
+
+Make sure you're downloading from the repository and not from this release in order to get the latest source code.
 
 # Notes
 
