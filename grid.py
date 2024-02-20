@@ -2,8 +2,9 @@ import copy
 from pyray import *
 
 class Grid(object):
+    '''A 2d list of that consists of alive and dead cells. 0 means dead and 1 means alive.
+    Stores a seperate copy of the list for updating the grid.'''
     def __init__(self, grid: list, cellSize: int) -> None:
-        '''Create two copies of the given, one for updating and another for storing.'''
         self.grid = grid
         self.storage = copy.deepcopy(grid)
         self.gridSize = len(grid)
@@ -11,7 +12,10 @@ class Grid(object):
 
 
     def updateGrid(self) -> None:
-        '''Updates the grid based on Conway's rule.'''
+        '''Updates the grid based on Conway's rule:
+            - If the cell is dead and has 3 neighbors, it revives
+            - If the cell is alive and has less than 2 or greater than 3 neighbors, it dies
+            - If the cell is alive and has 2 or 3 neighbors, it stays alive'''
         grid = self.grid
         storage = self.storage
         gridSize = self.gridSize
@@ -34,7 +38,7 @@ class Grid(object):
 
 
     def countNeighbors(self, i: int, j: int) -> int:
-        '''Count the surrounding alive cells at the given cell index.'''
+        '''Counts the surrounding alive cells of the given cell index.'''
         grid = self.storage
         return (grid[i][j-1] + grid[i][j+1]) + (grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1]) + (grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1])
 
@@ -59,7 +63,7 @@ class Grid(object):
 
 
     def drawGrid(self) -> None:
-        '''Draw the grid to the screen.'''
+        '''Draws the grid to the screen.'''
         grid = self.grid
         gridSize = self.gridSize
         cellSize = self.cellSize
