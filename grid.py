@@ -16,7 +16,7 @@ class Grid(object):
 # update them to self.grid based on Conway's rule:
 #  - If the cell is dead and has 3 neighbors, it revives
 #  - If the cell is alive and has less than 2 or greater than 3 neighbors, it dies
-#  - If the cell is alive and has 2 or 3 neighbors, it stays alive'''
+#  - If the cell is alive and has 2 or 3 neighbors, it stays alive
     def updateGrid(self) -> None:
         grid = self.grid
         storage = self.storage
